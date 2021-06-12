@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\KasirController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,3 +20,22 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(
+    ['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['auth']],
+    function () {
+        Route::get('dashboard', 'DashboardController@index');
+        Route::resource('categories', 'CategoryController');
+        Route::resource('products', 'ProductController');
+        Route::resource('transactions', 'TransactionController');
+        Route::resource('inventories', 'InventoryController');
+        
+        Route::get('/kasir', [KasirController::class, 'index'])->name('kasir');
+        Route::get('transactions/masuk/{product_id}', 'TransactionController@masuk');
+        Route::get('products/{productID}/images', 'ProductController@images');
+        Route::get('products/{productID}/add-image', 'ProductController@add_image');
+        Route::post('products/images/{productID}', 'ProductController@upload_image');
+        Route::delete('products/images/{imageID}', 'ProductController@remove_image');
+        
+    }
+);
