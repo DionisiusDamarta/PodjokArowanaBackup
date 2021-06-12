@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\KasirController;
+use App\Http\Controllers\Admin\KasirController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,8 +29,10 @@ Route::group(
         Route::resource('products', 'ProductController');
         Route::resource('transactions', 'TransactionController');
         Route::resource('inventories', 'InventoryController');
-        
+        // Route::get('/kasir', 'KasirController@index')->name('kasir');
+
         Route::get('/kasir', [KasirController::class, 'index'])->name('kasir');
+
         Route::get('transactions/masuk/{product_id}', 'TransactionController@masuk');
         Route::get('products/{productID}/images', 'ProductController@images');
         Route::get('products/{productID}/add-image', 'ProductController@add_image');

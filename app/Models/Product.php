@@ -40,6 +40,7 @@ class Product extends Model
     {
         return $this->hasMany('App\Models\ProductImage');
     }
+    
 
     public static function statuses()
     {

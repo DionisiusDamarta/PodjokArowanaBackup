@@ -23,6 +23,7 @@
     <!-- FAVICON -->
     <link href="{{ URL::asset('admin/assets/img/favicon.png') }}" rel="shortcut icon" />
     <script src="{{ URL::asset('admin/assets/plugins/nprogress/nprogress.js') }}"></script>
+    @livewireStyles
 </head>
 <body class="header-fixed sidebar-fixed sidebar-dark header-light" id="body">
     <script>
@@ -56,5 +57,6 @@
             return confirm("Do you want to remove this?");
         });
     </script>
+    @livewireScripts
 </body>
 </html>

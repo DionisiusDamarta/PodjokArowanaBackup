@@ -89,7 +89,7 @@
                             </li>
 
                             <li>
-                                <a class="sidenav-item-link" href="flag-icon.html">
+                                <a class="sidenav-item-link" href="{{ url('admin/kasir') }}">
                                     <span class="nav-text">Penjualan</span>
                                 </a>
                             </li>

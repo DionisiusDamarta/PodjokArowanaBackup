@@ -9,10 +9,10 @@
         <div class="form-group row pb-5">
             <form class="row g-3 mt-3" wire:submit.prevent="submit">
                 <label for="inputEmail3" class="col-sm-2 col-form-label">Product</label>
-                <div class="col-sm-6">
+                <div class="col-sm-8">
                     <select class="form-control @error('product_id') is-invalid @enderror " wire:model="product_id" required>
                             <option>-- Pilih Product --</option>
-                            @foreach ($products as $product)
+                        @foreach ($products as $product)
                             <option value="{{ $product->id }}"> {{ $product->name }} </option>
                         @endforeach
                     </select>
@@ -23,7 +23,7 @@
                     </div>
                     @enderror
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-2">
                     <button type="submit" class="btn btn-success w-100">Submit</button>
                 </div>
             </form>
@@ -48,23 +48,26 @@
                     </tr>
                 </thead>
                 <tbody>
-                    
+                    @foreach ($transactions as $transaction)
                     <tr>
-                        <td>  </td>
-                        <td> </td>
+                        <td> {{ $loop->iteration }} </td>
+                        <td> {{ $transaction->product->name }} </td>
                         <td>
                             <div>
-                                <input type="text" class="form-control qty" value="" readonly>
-                                <span class="btn btn-success btn-sm" wire:click="increment()">+</span>
+                                @if ($transaction->qty > 1)
+                                    <span class="btn btn-danger btn-sm" wire:click="decrement({{$transaction->id}})">-</span>
+                                @endif
+                                <input type="text" class="form-control qty" value="{{ $transaction->qty }}" readonly>
+                                <span class="btn btn-success btn-sm" wire:click="increment({{$transaction->id}})">+</span>
                             </div>
                         </td>
-                        <td>Rp. </td>
-                        <td>Rp.  </td>
+                        <td>Rp. {{ number_format($transaction->product->price)}} </td>
+                        <td>Rp. {{ number_format($transaction->product->price*$transaction->qty)}} </td>
                         <td>
-                            <button type="button" wire:click="deleteTransaction()" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
+                            <button type="button" wire:click="deleteTransaction({{$transaction->id}})" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i></button>
                         </td>
                     </tr>
-                    
+                    @endforeach
                 </tbody>
                 <tfoot>
                     <td></td>
@@ -72,7 +75,7 @@
                     <td></td>
                     <td style="text-align:right;">Total Pembelian</td>
                     <td>
-                        Rp {{ number_format(50) }}
+                        Rp {{ number_format($transactions->sum('total')) }}
                     </td>
                     <tr>
                         <td style="border:none;"></td>
@@ -89,7 +92,7 @@
                         <td style="border:none;"></td>
                         <td style="text-align:right;">Kembalian</td>
                         <td style="text-align:left;">
-                            Rp  {{ number_format(50) }}
+                            
                         </td>
                     </tr>
                 </tfoot>
@@ -103,4 +106,3 @@
 
 @push('scripts')
 @endpush
-
