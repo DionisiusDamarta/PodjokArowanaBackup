@@ -92,7 +92,7 @@
                         <td style="border:none;"></td>
                         <td style="text-align:right;">Kembalian</td>
                         <td style="text-align:left;">
-                            
+                        Rp  {{ number_format($pembayaran - $transactions->sum('total')) }}
                         </td>
                     </tr>
                 </tfoot>

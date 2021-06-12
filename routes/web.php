@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\KasirController;
 /*
@@ -32,6 +31,7 @@ Route::group(
         // Route::get('/kasir', 'KasirController@index')->name('kasir');
 
         Route::get('/kasir', [KasirController::class, 'index'])->name('kasir');
+        Route::get('/invoice/{no_order}', [KasirController::class, 'invoice'])->name('invoice');
 
         Route::get('transactions/masuk/{product_id}', 'TransactionController@masuk');
         Route::get('products/{productID}/images', 'ProductController@images');

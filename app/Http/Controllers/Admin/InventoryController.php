@@ -76,6 +76,7 @@ class InventoryController extends Controller
     public function update($inventory)
     {
         $productInventory = ProductInventory::where('product_id', '=', $inventory['product_id'])->firstOrFail();
+        
         if ($inventory['jenis_transaksi'] == 1) {
             $productInventory->qty += $inventory['jumlah'];
         }else{

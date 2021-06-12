@@ -40,6 +40,7 @@ class TransactionController extends Controller
         return view('admin.transactions.form', ['product' => $product]);
     }
 
+
     /**
      * Store a newly created resource in storage.
      *
@@ -56,7 +57,17 @@ class TransactionController extends Controller
         Transaction::create($this->data);
         app('App\Http\Controllers\Admin\InventoryController')->update($this->data);
         return redirect('/admin/inventories');
+    }
 
+    public function storeTransaction($request)
+    {
+        $product_id = $request['product_id'];
+        $this->data['product_id'] = $product_id;
+        $this->data['jenis_transaksi'] = $request['jenis_transaksi'];
+        $this->data['jumlah'] = $request['qty'];
+        $this->data['jumlah_awal'] = ProductInventory::where('product_id', '=', $product_id)->firstOrFail()->qty;
+        Transaction::create($this->data);
+        app('App\Http\Controllers\Admin\InventoryController')->update($this->data);
     }
 
     /**
