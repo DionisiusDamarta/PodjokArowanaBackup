@@ -6,7 +6,7 @@
         }
     </style>
     <div class="card-body">
-        <div class="form-group row pb-5">
+        <div class="card-body border-top pb-5 p-0 mt-3">
             <form class="row g-3 mt-3" wire:submit.prevent="submit">
                 <label for="inputEmail3" class="col-sm-2 col-form-label">Product</label>
                 <div class="col-sm-8">
@@ -29,11 +29,11 @@
             </form>
         </div>
 
-        @if (session()->has('message'))
+        <!-- @if (session()->has('message'))
             <div class="alert alert-success">
                 {{ session('message') }}
             </div>
-        @endif
+        @endif -->
 
         <div class="card-body border-top pb-5 p-0 mt-3">
             <table class="table table-striped table-hover">
