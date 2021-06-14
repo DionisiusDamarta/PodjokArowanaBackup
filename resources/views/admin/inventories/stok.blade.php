@@ -6,28 +6,22 @@
             <div class="col-lg-12">
                 <div class="card card-default">
                     <div class="card-header card-header-border-bottom">
-                        <h2>Products</h2>
+                        <h2>Stok Produk</h2>
                     </div>
                     <div class="card-body">
                         @include('admin.partials.flash')
                         <table class="table table-bordered table-stripped">
                             <thead>
-                                <th>ID Transaksi</th>
                                 <th>Kode Produk</th>
                                 <th>Nama</th>
                                 <th>Stok</th>
-                                <th>Aksi</th> 
                             </thead>
                             <tbody>
                                 @forelse ($products as $product)
                                     <tr>    
-                                        <td>{{ $product->id }}</td>
                                         <td>{{ $product->sku }}</td>
                                         <td>{{ $product->name }}</td>
-                                        <td>{{ $product->ProductInventory->qty }}</td>
-                                        <td>
-                                            <a href="{{ url('admin/transactions/masuk/'.$product->id) }}" class="btn btn-warning btn-sm">Input Barang Masuk</a>
-                                        </td>
+                                        <td>{{ $product->productInventory->qty }}</td>
                                     </tr>
                                 @empty
                                     <tr>

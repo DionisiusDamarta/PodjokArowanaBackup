@@ -21,6 +21,12 @@ class InventoryController extends Controller
         return view('admin.inventories.index', ['products'=>$products]);
     }
 
+    public function stok()
+    {
+        $products = Product::orderBy('name', 'asc')->paginate(10);
+        return view('admin.inventories.stok', ['products'=>$products]);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
