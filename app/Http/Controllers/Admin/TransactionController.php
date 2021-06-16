@@ -11,33 +11,44 @@ use App\Models\Order;
 
 class TransactionController extends Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->data['currentAdminMenu'] = 'transaksi';
+        $this->data['currentAdminSubMenu'] = 'masuk';
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $transactions = Transaction::orderBy('created_at','desc')->paginate(10);
-        return view('admin.transactions.index',['transactions' => $transactions]);
+    { 
+        $this->data['currentAdminMenu'] = 'laporan';
+        $this->data['transactions'] = Transaction::orderBy('created_at','desc')->paginate(10);
+        return view('admin.transactions.index', $this->data);
     }
     
     public function penjualan()
     {
-        $transactions = Order::orderBy('created_at','desc')->paginate(10);
-        return view('admin.transactions.penjualan',['transactions' => $transactions]);
+        $this->data['currentAdminMenu'] = 'laporan';
+        $this->data['transactions'] = Order::orderBy('created_at','desc')->paginate(10);
+        return view('admin.transactions.penjualan',$this->data);
     }
 
     public function input()
     {
-        $transactions = Transaction::orderBy('created_at','desc')->where('jenis_transaksi', '1')->paginate(10);
-        return view('admin.transactions.index',['transactions' => $transactions]);
+        $this->data['currentAdminMenu'] = 'laporan';
+        $this->data['transactions'] = Transaction::orderBy('created_at','desc')->where('jenis_transaksi', '1')->paginate(10);
+        return view('admin.transactions.index',$this->data);
     }
 
     public function output()
     {
-        $transactions = Transaction::orderBy('created_at','desc')->where('jenis_transaksi', '2')->paginate(10);
-        return view('admin.transactions.index',['transactions' => $transactions]);
+        $this->data['currentAdminMenu'] = 'laporan';
+        $this->data['transactions'] = Transaction::orderBy('created_at','desc')->where('jenis_transaksi', '2')->paginate(10);
+        return view('admin.transactions.index',$this->data);
     }
 
     /**
@@ -47,15 +58,15 @@ class TransactionController extends Controller
      */
     public function show($product_id)
     {
-        $product = Product::find($product_id);
-        return view('admin.transactions.form', ['product' => $product]);
+        $this->data['product'] = Product::find($product_id);
+        return view('admin.transactions.form', $this->data);
     }
 
 
     public function create()
     {
-        $products = Product::orderBy('name', 'asc')->paginate(10);
-        return view('admin.inventories.index', ['products'=>$products]);
+        $this->data['products'] = Product::orderBy('name', 'asc')->paginate(10);
+        return view('admin.inventories.index',$this->data);
     }
 
     

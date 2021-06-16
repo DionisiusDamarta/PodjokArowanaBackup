@@ -81,6 +81,7 @@
                     <!-- <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
 	          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li> -->
                     <li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li>
+                    <li class="nav-item"><a href="/admin/dashboard" class="nav-link">Admin</a></li>
                 </ul>
             </div>
         </div>

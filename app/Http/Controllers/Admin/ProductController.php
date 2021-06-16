@@ -21,8 +21,13 @@ class ProductController extends Controller
 
     public function __construct()
     {
+        parent::__construct();
+
+        $this->data['currentAdminMenu'] = 'produk';
+        $this->data['currentAdminSubMenu'] = 'tambah';
         $this->data['statuses'] = Product::statuses();
     }
+
     /**
      * Display a listing of the resource.
      *

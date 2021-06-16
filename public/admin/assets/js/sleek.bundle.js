@@ -10110,7 +10110,7 @@
 	      showMethod: "fadeIn",
 	      hideMethod: "fadeOut"
 	    };
-	    toastr.success("Welcome to Sleek Dashboard", "Howdy!");
+	    toastr.success("Selamat Datang", "Admin");
 	  }
 
 	  if(toaster.length != 0){

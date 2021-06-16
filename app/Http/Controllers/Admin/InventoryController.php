@@ -10,6 +10,12 @@ use App\Models\Transaction;
 
 class InventoryController extends Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->data['currentAdminMenu'] = 'iventory';
+        $this->data['currentAdminSubMenu'] = 'tambah';
+    }
     /**
      * Display a listing of the resource.
      *
@@ -17,14 +23,15 @@ class InventoryController extends Controller
      */
     public function index()
     {
-        $products = Product::orderBy('name', 'asc')->paginate(10);
-        return view('admin.inventories.index', ['products'=>$products]);
+        $this->data['products'] = Product::orderBy('name', 'asc')->paginate(10);
+        return view('admin.inventories.index', $this->data);
     }
 
     public function stok()
     {
-        $products = Product::orderBy('name', 'asc')->paginate(10);
-        return view('admin.inventories.stok', ['products'=>$products]);
+        $this->data['currentAdminMenu'] = 'laporan';
+        $this->data['products'] = Product::orderBy('name', 'asc')->paginate(10);
+        return view('admin.inventories.stok', $this->data);
     }
 
     /**

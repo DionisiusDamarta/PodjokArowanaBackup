@@ -12,6 +12,13 @@ use Session;
 
 class CategoryController extends Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+
+        $this->data['currentAdminMenu'] = 'produk';
+        $this->data['currentAdminSubMenu'] = 'tambah';
+    }
     /**
      * Display a listing of the resource.
      *

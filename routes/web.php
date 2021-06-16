@@ -16,7 +16,12 @@ use App\Http\Controllers\Admin\KasirController;
 //     return view('welcome');
 // });
 
-Auth::routes();
+Auth::routes([
+    'register' => false, // Registration Routes...
+    'reset' => false, // Password Reset Routes...
+    'verify' => false, // Email Verification Routes...
+  ]);
+// Auth::routes();
 
 Route::get('/contact', 'HomeController@contact');
 Route::get('/category/{slug}', 'Admin\ProductController@showCategory');

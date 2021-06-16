@@ -20,7 +20,7 @@
 
         <div class="navbar-right ">
             <ul class="nav navbar-nav">
-                <li class="dropdown notifications-menu">
+                <!-- <li class="dropdown notifications-menu">
                     <button class="dropdown-toggle" data-toggle="dropdown">
                         <i class="mdi mdi-bell-outline"></i>
                     </button>
@@ -79,29 +79,29 @@
                             </a>
                         </li>
                     </ul>
-                </li>
+                </li> -->
                 <li class="right-sidebar-in right-sidebar-2-menu">
                     <i class="mdi mdi-settings mdi-spin"></i>
                 </li>
                 <!-- User Account -->
                 <li class="dropdown user-menu">
                     <button href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                        <img src="{{ URL::asset('admin/assets/img/user/user.png') }}" class="user-image"
-                            alt="User Image" />
+                        <!-- <img src="{{ URL::asset('admin/assets/img/user/user.png') }}" class="user-image"
+                            alt="User Image" /> -->
                         <span class="d-none d-lg-inline-block">Admin Podjok Arowana</span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right">
                         <!-- User image -->
                         <li class="dropdown-header">
-                            <img src="{{ URL::asset('admin/assets/img/user/user.png') }}" class="img-circle"
-                                alt="User Image" />
+                            <!-- <img src="{{ URL::asset('admin/assets/img/user/user.png') }}" class="img-circle"
+                                alt="User Image" /> -->
                             <div class="d-inline-block">
                                 Admin
                                 <small class="pt-1">admin@podjokarowana.com</small>
                             </div>
                         </li>
 
-                        <li>
+                        <!-- <li>
                             <a href="user-profile.html">
                                 <i class="mdi mdi-account"></i>
                                 My Profile
@@ -124,13 +124,20 @@
                                 <i class="mdi mdi-settings"></i>
                                 Setting
                             </a>
-                        </li>
-
+                        </li> -->
                         <li class="dropdown-footer">
-                            <a href="index.html">
+                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                            <!-- <a href="{{ route('logout') }}">
                                 <i class="mdi mdi-logout"></i>
                                 Log Out
-                            </a>
+                            </a> -->
                         </li>
                     </ul>
                 </li>
