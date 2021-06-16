@@ -50,4 +50,19 @@ class Product extends Model
             2 => 'inactive',
         ];
     }
+
+    function status_label()
+    {
+        $statuses = $this->statuses();
+
+       return isset($this->status) ? $statuses[$this->status] : null;
+    }
+
+    public function scopeActive($query)
+    {
+        return $query->where('status', 1)
+                ->orderBy('created_at', 'DESC');
+    }
+
+
 }

@@ -12,13 +12,16 @@ use App\Http\Controllers\Admin\KasirController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/contact', 'HomeController@contact');
+Route::get('/category/{slug}', 'Admin\ProductController@showCategory');
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/product/{slug}', 'Admin\ProductController@show');
 
 Route::group(
     ['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['auth']],
@@ -34,6 +37,7 @@ Route::group(
         Route::get('/invoice/{no_order}', [KasirController::class, 'invoice'])->name('invoice');
 
         Route::get('transactions/masuk/{product_id}', 'TransactionController@masuk');
+
         Route::get('products/{productID}/images', 'ProductController@images');
         Route::get('products/{productID}/add-image', 'ProductController@add_image');
         Route::post('products/images/{productID}', 'ProductController@upload_image');

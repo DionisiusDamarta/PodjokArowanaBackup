@@ -178,8 +178,7 @@ $(function() {
         ]
       }
     ];
-
-    var dakota = new google.maps.LatLng(44.3341, -100.305);
+    var dakota = new google.maps.LatLng(-7.938735818941687, 112.58856955102736);
     var map = new google.maps.Map(document.getElementById("styleMap"), {
       zoom: 7,
       center: dakota,

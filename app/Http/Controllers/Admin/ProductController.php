@@ -89,7 +89,42 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = Product::active()->where('slug', $id)->first();
+
+        if (!$product) {
+            return redirect('products');
+        }
+
+        $this->data['product'] = $product;
+        $this->data['categories'] = Category::orderBy('name', 'ASC')->get();
+
+        return view('user.detail', $this->data);
+    }
+
+    public function showCategory($slug)
+    {
+
+        $data = Category::with('products')->where('slug', $slug)->first();
+        // return $data->products;
+        // $products = DB::table('products')
+        // ->join('product_categories', 'products.id', '=', 'product_categories.product_id')
+        // ->join('categories', 'categories.id', '=', 'product_categories.category_id')
+        // ->select('products.*')
+        // ->get();
+
+        $this->data['products'] = $data->products;
+        $this->data['categories'] = Category::orderBy('name', 'ASC')->get();
+        return view('user.home', $this->data);
+        //$product = Product::active()->where('slug', $slug)->first();
+
+        // if (!$product) {
+        //     return redirect('products');
+        // }
+
+        // $this->data['product'] = $product;
+        // $this->data['categories'] = Category::orderBy('name', 'ASC')->get();
+
+        // return view('user.detail', $this->data);
     }
 
     /**

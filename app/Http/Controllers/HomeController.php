@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Product;
+use App\Models\ProductImage;
+use App\Models\Category;
 
 class HomeController extends Controller
 {
@@ -13,7 +16,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        parent::__construct();
     }
 
     /**
@@ -23,6 +26,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $products = Product::orderBy('name', 'asc')->paginate(12);
+        $this->data['products'] = $products;
+        $this->data['categories'] = Category::orderBy('name', 'ASC')->get();
+        return view('user.home', $this->data);
+    }
+
+    public function contact()
+    {
+        $this->data['categories'] = Category::orderBy('name', 'ASC')->get();
+        return view('user.contact', $this->data);
     }
 }
