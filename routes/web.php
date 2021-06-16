@@ -28,20 +28,23 @@ Route::group(
     function () {
         Route::get('dashboard', 'DashboardController@index');
         Route::resource('categories', 'CategoryController');
-        Route::resource('products', 'ProductController');
+        
+        Route::get('transactions/input', 'TransactionController@input');
+        Route::get('transactions/output', 'TransactionController@output');
+        Route::get('transactions/penjualan', 'TransactionController@penjualan');
+        Route::get('transactions/masuk/{product_id}', 'TransactionController@show'); 
         Route::resource('transactions', 'TransactionController');
+      
+        Route::get('inventories/stok', 'InventoryController@stok');
         Route::resource('inventories', 'InventoryController');
-        // Route::get('/kasir', 'KasirController@index')->name('kasir');
-
-        Route::get('/kasir', [KasirController::class, 'index'])->name('kasir');
-        Route::get('/invoice/{no_order}', [KasirController::class, 'invoice'])->name('invoice');
-
-        Route::get('transactions/masuk/{product_id}', 'TransactionController@masuk');
-
+        
+        Route::resource('products', 'ProductController');    
         Route::get('products/{productID}/images', 'ProductController@images');
         Route::get('products/{productID}/add-image', 'ProductController@add_image');
         Route::post('products/images/{productID}', 'ProductController@upload_image');
         Route::delete('products/images/{imageID}', 'ProductController@remove_image');
         
+        Route::get('/kasir', [KasirController::class, 'index'])->name('kasir');
+        Route::get('/invoice/{no_order}', [KasirController::class, 'invoice'])->name('invoice');
     }
 );

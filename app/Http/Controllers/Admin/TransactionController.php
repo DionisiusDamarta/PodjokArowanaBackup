@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\ProductInventory;
 use App\Models\Transaction;
+use App\Models\Order;
 
 class TransactionController extends Controller
 {
@@ -19,7 +20,24 @@ class TransactionController extends Controller
     {
         $transactions = Transaction::orderBy('created_at','desc')->paginate(10);
         return view('admin.transactions.index',['transactions' => $transactions]);
-        
+    }
+    
+    public function penjualan()
+    {
+        $transactions = Order::orderBy('created_at','desc')->paginate(10);
+        return view('admin.transactions.penjualan',['transactions' => $transactions]);
+    }
+
+    public function input()
+    {
+        $transactions = Transaction::orderBy('created_at','desc')->where('jenis_transaksi', '1')->paginate(10);
+        return view('admin.transactions.index',['transactions' => $transactions]);
+    }
+
+    public function output()
+    {
+        $transactions = Transaction::orderBy('created_at','desc')->where('jenis_transaksi', '2')->paginate(10);
+        return view('admin.transactions.index',['transactions' => $transactions]);
     }
 
     /**
@@ -27,6 +45,12 @@ class TransactionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function show($product_id)
+    {
+        $product = Product::find($product_id);
+        return view('admin.transactions.form', ['product' => $product]);
+    }
+
 
     public function create()
     {
@@ -34,11 +58,7 @@ class TransactionController extends Controller
         return view('admin.inventories.index', ['products'=>$products]);
     }
 
-    public function masuk($product_id)
-    {
-        $product = Product::find($product_id);
-        return view('admin.transactions.form', ['product' => $product]);
-    }
+    
 
 
     /**
@@ -76,10 +96,7 @@ class TransactionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
+    
 
     /**
      * Show the form for editing the specified resource.

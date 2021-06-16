@@ -113,25 +113,25 @@
                             </li>
 
                             <li>
-                                <a class="sidenav-item-link" href="input-group.html">
+                                <a class="sidenav-item-link" href="{{ url('admin/transactions/input') }}">
                                     <span class="nav-text">Riwayat Input Barang</span>
                                 </a>
                             </li>
 
                             <li>
-                                <a class="sidenav-item-link" href="checkbox-radio.html">
+                                <a class="sidenav-item-link" href="{{ url('admin/transactions/output') }}">
                                     <span class="nav-text">Riwayat Penjualan</span>
                                 </a>
                             </li>
 
                             <li>
-                                <a class="sidenav-item-link" href="form-validation.html">
+                                <a class="sidenav-item-link" href="{{url('admin/transactions/penjualan')}}">
                                     <span class="nav-text">Laporan Penjualan</span>
                                 </a>
                             </li>
 
                             <li>
-                                <a class="sidenav-item-link" href="form-advance.html">
+                                <a class="sidenav-item-link" href="{{url('admin/inventories/stok')}}">
                                     <span class="nav-text">Laporan Stock</span>
                                 </a>
                             </li>

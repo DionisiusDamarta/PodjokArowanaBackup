@@ -6,31 +6,25 @@
             <div class="col-lg-12">
                 <div class="card card-default">
                     <div class="card-header card-header-border-bottom">
-                        <h2>Riwayat Transaksi</h2>
+                        <h2>Laporan Penjualan</h2>
                     </div>
                     <div class="card-body"> 
                         @include('admin.partials.flash')
                         <table class="table table-bordered table-stripped">
                             <thead>
-                                <th>ID</th>
-                                <th>Kode Produk</th>
-                                <th>Nama Produk</th>
-                                <th>Jenis Transaksi</th>
-                                <th>Jumlah</th>
+                                <th>No. Nota</th>
+                                <th>Total</th>
+                                <th>Pembayaran</th>
+                                <th>Kembalian</th>
                                 <th>Tanggal/waktu</th>
                             </thead>
                             <tbody>
                                 @forelse ($transactions as $transaction)
                                     <tr>
-                                        <td>{{ $transaction->id}}</td>    
-                                        <td>{{ $transaction->Product->sku}}</td>
-                                        <td>{{ $transaction->Product->name }}</td>
-                                        @if($transaction->jenis_transaksi==1)
-                                        <td>Barang Masuk</td>
-                                        @else
-                                        <td>Barang Keluar</td>
-                                        @endif
-                                        <td>{{ $transaction->jumlah }}</td>
+                                        <td>{{ $transaction->no_order}}</td>    
+                                        <td>{{ $transaction->grand_total}}</td>
+                                        <td>{{ $transaction->pembayaran }}</td>
+                                        <td>{{ $transaction->kembalian }}</td>
                                         <td>{{ $transaction->created_at }}</td>
                                     </tr>
                                 @empty
