@@ -12,13 +12,16 @@ use App\Http\Controllers\Admin\KasirController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/contact', 'HomeController@contact');
+Route::get('/category/{slug}', 'Admin\ProductController@showCategory');
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('/product/{slug}', 'Admin\ProductController@show');
 
 Route::group(
     ['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['auth']],
@@ -29,13 +32,13 @@ Route::group(
         Route::get('transactions/input', 'TransactionController@input');
         Route::get('transactions/output', 'TransactionController@output');
         Route::get('transactions/penjualan', 'TransactionController@penjualan');
-        Route::get('transactions/masuk/{product_id}', 'TransactionController@show');
+        Route::get('transactions/masuk/{product_id}', 'TransactionController@show'); 
         Route::resource('transactions', 'TransactionController');
-        
+      
         Route::get('inventories/stok', 'InventoryController@stok');
         Route::resource('inventories', 'InventoryController');
-
-        Route::resource('products', 'ProductController');
+        
+        Route::resource('products', 'ProductController');    
         Route::get('products/{productID}/images', 'ProductController@images');
         Route::get('products/{productID}/add-image', 'ProductController@add_image');
         Route::post('products/images/{productID}', 'ProductController@upload_image');
