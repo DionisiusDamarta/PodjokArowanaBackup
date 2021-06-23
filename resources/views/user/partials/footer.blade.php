@@ -11,7 +11,8 @@
             <div class="col-md">
                 <div class="ftco-footer-widget mb-4">
                     <h2 class="ftco-heading-2">Podjok Arowana</h2>
-                    <p>Podjok Arowana menjual berbagai jenis ikan arwana</p>
+                    <p>Podjok Arowana menjual berbagai jenis ikan arwana. Podjok Arowana melayani COD khusus kota Malang
+                    </p>
                     <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
                         <li class="ftco-animate">
                             <a href="https://www.facebook.com/arwana.amarta">

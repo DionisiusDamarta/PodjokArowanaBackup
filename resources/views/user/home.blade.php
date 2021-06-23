@@ -1,19 +1,7 @@
 @extends('user.layout')
 @section('content')
-
 <section class="ftco-section">
     <div class="container">
-        <div class="row justify-content-center">
-            <!-- <div class="col-md-10 mb-5 text-center">
-    				<ul class="product-category">
-    					<li><a href="#" class="active">Semua Barang</a></li>
-    					<li><a href="#">Ikan</a></li>
-    					<li><a href="#">Makanan Ikan</a></li>
-    					<li><a href="#">Aquarium</a></li>
-    					
-    				</ul>
-    			</div> -->
-        </div>
         <div class="row">
             @foreach($products as $product)
             <div class="col-md-6 col-lg-3 ftco-animate">
@@ -30,9 +18,6 @@
                         @endif
                         <div class="overlay"></div>
                     </a>
-                    <!-- <a href="#" class="img-prod"><img class="img-fluid" src="" alt="Colorlib Template">
-    						<div class="overlay"></div>
-    					</a> -->
                     <div class="text py-3 pb-4 px-3 text-center">
                         <h3><a href="#">{{$product->name}}</a></h3>
                         <div class="d-flex">
