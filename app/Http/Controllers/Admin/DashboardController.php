@@ -13,8 +13,8 @@ class DashboardController extends Controller
     public function __construct()
     {
         parent::__construct();
-        $this->data['currentAdminMenu'] = 'iventory';
-        $this->data['currentAdminSubMenu'] = 'tambah';
+        $this->data['currentAdminMenu'] = 'dashboard';
+        $this->data['currentAdminSubMenu'] = 'dashboard';
     }
     function index()
     {
