@@ -31,19 +31,15 @@
                         <a href="#" class="mr-2" style="color: #000;">100 <span style="color: #bbb;">Rating</span></a>
                     </p>
                     <p class="text-left">
-                        <a href="#" class="mr-2" style="color: #000;">500 <span style="color: #bbb;">Sold</span></a>
+                        <a href="#" class="mr-2"
+                            style="color: #000;">{{$product->transactions->where('jenis_transaksi',2)->sum('jumlah')}}
+                            <span style="color: #bbb;">Sold</span></a>
                     </p>
                 </div>
-                <p class="price"><span>Rp {{$product->price}}</span></p>
+                <p class="price"><span>Rp {{number_format($product->price)}}</span></p>
                 <p>{{$product->short_description}}</p>
                 <p>{{$product->description}}</p>
-                <div class="w-100"></div>
-                <div class="input-group col-md-6 d-flex mb-3">
-                    Stock :
-                    <input type="text" id="quantity" name="quantity" class="form-control input-number" disabled
-                        value="{{$product->productInventory->qty}}">
-                </div>
-                <div class="w-100"></div>
+                <p><b> Stok : {{$product->productInventory->qty}} unit</b></p>
             </div>
         </div>
     </div>

@@ -40,6 +40,11 @@ class Product extends Model
     {
         return $this->hasMany('App\Models\ProductImage');
     }
+
+    public function transactions()
+    {
+        return $this->hasMany('App\Models\Transaction');
+    }
     
 
     public static function statuses()
@@ -63,6 +68,5 @@ class Product extends Model
         return $query->where('status', 1)
                 ->orderBy('created_at', 'DESC');
     }
-
 
 }

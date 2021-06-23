@@ -6,22 +6,42 @@
             <div class="w-100"></div>
             <div class="col-md-3 d-flex">
                 <div class="info bg-white p-4">
-                    <p><span>Address:</span> Perumahan Griya Amarta no C7. Joyo Agung, Malang</p>
+                    <p>
+                        <span>Address:</span><br>
+                        Perumahan Griya Amarta no C7. Joyo Agung, Malang
+                    </p>
                 </div>
             </div>
             <div class="col-md-3 d-flex">
                 <div class="info bg-white p-4">
-                    <p><span>Phone:</span> <a href="tel://1234567920">+62 895-0700-7645</a></p>
+                    <p>
+                        <span>Phone:</span><br>
+                        <a href="tel://+62 895-0700-7645">+62 895-0700-7645</a>
+                    </p>
+                    <p>
+                        <span>Whatsapp:</span>
+                        <a href="https://wa.me/6289507007645">wa.me/6289507007645</a>
+                    </p>
                 </div>
             </div>
             <div class="col-md-3 d-flex">
                 <div class="info bg-white p-4">
-                    <p><span>Email:</span> <a href="mailto:info@yoursite.com">labitamaudy11@gmail.com</a></p>
+                    <p>
+                        <span>Instagram</span>
+                        <a href="https://www.instagram.com/podjok_arowana">@podjok_arowana</a>
+                    </p>
+                    <p>
+                        <span>Facebook</span><br>
+                        <a href="https://www.facebook.com/arwana.amarta">Podjok Arowana</a>
+                    </p>
                 </div>
             </div>
             <div class="col-md-3 d-flex">
                 <div class="info bg-white p-4">
-                    <p><span>Instagram</span> <a href="#">@podjok_arowana</a></p>
+                    <p>
+                        <span>Email:</span>
+                        <a href="mailto:labitamaudy11@gmail.com">labitamaudy11@gmail.com</a>
+                    </p>
                 </div>
             </div>
         </div>

@@ -26,7 +26,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // return view('home');
         $products = Product::orderBy('name', 'asc')->paginate(12);
         $this->data['products'] = $products;
         $this->data['categories'] = Category::orderBy('name', 'ASC')->get();

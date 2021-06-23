@@ -21,12 +21,22 @@
             <!-- sidebar menu -->
             <ul class="nav sidebar-inner" id="sidebar-menu">
                 <li class="has-sub">
-                    <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
+                    <a class="sidenav-item-link" href="{{ url('admin/dashboard') }}" data-toggle="collapse"
                         data-target="#dashboard" aria-expanded="false" aria-controls="dashboard">
                         <i class="mdi mdi-view-dashboard-outline"></i>
                         <span class="nav-text">Dashboard</span>
                         <b class="caret"></b>
                     </a>
+                    <ul class="collapse {{ ($currentAdminMenu == 'dashboard') ? 'show' : ''}}" id="dashboard"
+                        data-parent="#sidebar-menu">
+                        <div class="sub-menu">
+                            <li class="active">
+                                <a class="sidenav-item-link" href="{{ url('admin/dashboard') }}">
+                                    <span class="nav-text">Dashboard</span>
+                                </a>
+                            </li>
+                        </div>
+                    </ul>
                 </li>
                 <li class="has-sub {{ ($currentAdminMenu == 'produk') ? 'active expand' : ''}}">
                     <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"

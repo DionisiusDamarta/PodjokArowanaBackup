@@ -42,7 +42,7 @@ class Index extends Component
         $transaction = Queue::find($id);
         $transaction->update([
             'qty' => $transaction->qty + 1,
-            'total' => $transaction->product->harga_product*($transaction->qty + 1)
+            'total' => $transaction->product->price*($transaction->qty + 1)
         ]);
 
         session()->flash('message', 'qty product berhasil di tambah');
@@ -53,7 +53,7 @@ class Index extends Component
         $transaction = Queue::find($id);
         $transaction->update([
             'qty' => $transaction->qty - 1,
-            'total' => $transaction->product->harga_product*($transaction->qty - 1)
+            'total' => $transaction->product->price*($transaction->qty - 1)
         ]);
 
         session()->flash('message', 'qty product berhasil di kurang');
@@ -107,6 +107,6 @@ class Index extends Component
         }
 
         // session()->flash('message', 'Transaction berhasil disimpan');
-        return redirect()->to('/admin/invoice/'.$order->no_order);
+        return redirect()->away('/admin/invoice/'.$order->no_order);
     }
 }
