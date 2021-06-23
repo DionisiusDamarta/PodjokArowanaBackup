@@ -37,7 +37,7 @@
                         <h3><a href="#">{{$product->name}}</a></h3>
                         <div class="d-flex">
                             <div class="pricing">
-                                <p class="price"><span class="mr-2">Rp {{$product->price}}</span></p>
+                                <p class="price"><span class="mr-2">Rp {{number_format($product->price, 2)}}</span></p>
                             </div>
                         </div>
                         <div class="bottom-area d-flex px-3">
